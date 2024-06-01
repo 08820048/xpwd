@@ -10,10 +10,14 @@
 [![GitHub issues](https://img.shields.io/github/issues/08820048/xpwd)](https://github.com/08820048/xpwd/issues)
 [![Contributors](https://img.shields.io/github/contributors/08820048/xpwd?style=flat-square)](https://github.com/08820048/xpwd/graphs/contributors)
 
-(**In order to provide a more efficient and convenient user experience, the original project quick_pswd (https://crates.io/crates/quick_pswd) has officially been renamed to xpwd.**)
+
 A command-line password generator built with Rust, offering a swift and effortless solution for creating passwords of varying strengths. Cure your password creation woes with a single command!
 
 </div>
+
+
+
+
 
 ## Installation
 
@@ -105,3 +109,10 @@ yd;mW)[1sW5q3p)6.Y
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/08820048/xpwd/blob/master/LICENSE) file for details.
+
+---
+
+## about
+
+**In order to provide a more efficient and convenient user experience, the original project quick_pswd (https://crates.io/crates/quick_pswd) has officially been renamed to xpwd.**
+
