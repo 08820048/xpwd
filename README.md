@@ -21,15 +21,25 @@ A command-line password generator built with Rust, offering a swift and effortle
 
 ## Installation
 
-> More installation methods are coming soon...
-
 ### **Install using Cargo**
 
 Please ensure that your operating system has Rust and the Cargo development environment properly configured.
 
-```powershell
+```rust
 cargo install xpwd //Install the latest version by default
 ```
+
+### Install using Scoop
+
+If you haven't installed **Scoop**, please refer to the official website for installation (https://scoop.sh/#/). Then, execute the following command to install **xpwd**
+
+```rust
+scoop install xpwd
+```
+
+> More installation methods are coming soon...
+
+
 
 ------------------
 
