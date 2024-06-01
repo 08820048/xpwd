@@ -1,0 +1,17 @@
+{
+  "version": "1.0.1",
+  "description": "xpwd",
+  "homepage": "https://github.com/08820048/xpwd",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/08820048/xpwd/releases/download/v1.0.1/xpwd-v1.0.1-x86_64-pc-windows.zip",
+      "hash": "e63b15585058712cfce8766d4abfe84f"
+    },
+    "32bit": {
+      "url": "https://github.com/08820048/xpwd/releases/download/v1.0.1/xpwd-v1.0.1-x86_64-pc-windows.zip",
+      "hash": "e63b15585058712cfce8766d4abfe84f"
+    }
+  },
+  "bin": "xpwd.exe"
+}

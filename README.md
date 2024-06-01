@@ -28,7 +28,7 @@ A command-line password generator built with Rust, offering a swift and effortle
 Please ensure that your operating system has Rust and the Cargo development environment properly configured.
 
 ```powershell
-cargo install xpwd --version=1.0.0 // When installing, please select the version of your choice.
+cargo install xpwd //Install the latest version by default
 ```
 
 ------------------
