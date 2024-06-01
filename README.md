@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://images.waer.ltd/notes/20240601113455.png" width="140px" />
 
-[![Crates.io](https://img.shields.io/crates/d/quick_pswd.svg)](https://crates.io/crates/xpwd)
+[![Crates.io](https://img.shields.io/crates/d/xpwd.svg)](https://crates.io/crates/xpwd)
 [![License](https://img.shields.io/github/license/08820048/xpwd)](https://github.com/08820048/xpwd/blob/master/LICENSE)
 [![rustc 1.77.0](https://img.shields.io/badge/rust-1.77.0-orange.svg)](https://img.shields.io/badge/rust-1.77.0-orange.svg)
 [![Documentation](https://docs.rs/console/badge.svg)](https://docs.rs/xpwd)
@@ -57,13 +57,36 @@ Options:
 
 
 $ xpwd -l 8 -c s
- j1618a59
++-----+---------+----------+
+| Len | complex | password |
++-----+---------+----------+
+| 8   | simple  | ld0an6qr |
++-----+---------+----------+
+🛡️ ■■■■■■■■■■■■■■■■■■■■ moderate
 
 $ xpwd -l 16 -c m
-Cio6PYtg30mLYtHC
++-----+---------+------------------+
+| Len | complex | password         |
++-----+---------+------------------+
+| 16  | medium  | DwkYFtnVRhYoVAgk |
++-----+---------+------------------+
+🛡️ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ very strong
 
-$ xpwd -l 18 -c c
-yd;mW)[1sW5q3p)6.Y
+$ xpwd -l 5 -c c
++-----+---------+----------+
+| Len | complex | password |
++-----+---------+----------+
+| 5   | complex | RtVUj    |
++-----+---------+----------+
+🛡️ ■■■■■■■■■■■■■ weak
+
+$ cargo run -- -l 3 -c s
++-----+---------+----------+
+| Len | complex | password |
++-----+---------+----------+
+| 3   | simple  | pl9      |
++-----+---------+----------+
+🛡️ ■■■■■■■■ very weak
 
 ```
 
@@ -115,4 +138,3 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ## about
 
 **In order to provide a more efficient and convenient user experience, the original project quick_pswd (https://crates.io/crates/quick_pswd) has officially been renamed to xpwd.**
-
