@@ -1,0 +1,25 @@
+[package]
+name = "xpwd"
+version = "1.0.0"
+edition = "2021"
+authors = ["Code0408"]
+description = "A simple and quick password generator for enhanced security."
+repository = "https://github.com/08820048/xpwd"
+documentation = "https://docs.rs/xpwd"
+license = "MIT"
+keywords = ["rust", "password", "security"]
+categories = ["development-tools"]
+
+[lib]
+name = "xpwd"
+path = "src/lib.rs"
+
+[dependencies]
+ansi_term = "0.12.1"
+clap = { version = "4.5.4", features = ["derive"] }
+clipboard = "0.5.0"
+colored = "2.1.0"
+prettytable-rs = "0.10.0"
+rand = "0.8.5"
+zxcvbn = "3.0.1"
+notify-rust = "4.11.0"
