@@ -1,6 +1,6 @@
 {
   "version": "1.0.1",
-  "description": "xpwd",
+  "description": "A command-line password generator built with Rust, offering a swift and effortless solution for creating passwords of varying strengths. Cure your password creation woes with a single command!",
   "homepage": "https://github.com/08820048/xpwd",
   "license": "MIT",
   "architecture": {
