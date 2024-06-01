@@ -2,7 +2,7 @@
 
 # xpwd Change Log
 
-## 2024-05-30
+## v1.0.0
 
 - Initiate project conception and establish project plan
 - Complete project setup, named "DigitShield"
@@ -10,7 +10,7 @@
 
 ---
 
-## 2024-05-31
+## v1.0.1
 
 - Adopt a new name and a tentative `Logo`
 
@@ -19,8 +19,9 @@
 - Uploaded to `crates.io`, introducing `cargo install` as a new installation method
 
 ----
-## 2024-06-01
+## v1.0.1-beta
 - New feature: Desktop popup notification after password generation!
 - Adjusted the main function's code structure.
 - Fixed the project's character logo.
-- Released version `v1.0.2`.
+- Improving terminal output aesthetics and enhancing user experience.
+- Released version `v1.0.1`.
