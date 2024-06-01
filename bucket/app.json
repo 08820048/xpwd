@@ -6,11 +6,7 @@
   "architecture": {
     "64bit": {
       "url": "https://github.com/08820048/xpwd/releases/download/v1.0.1/xpwd-v1.0.1-x86_64-pc-windows.zip",
-      "hash": "e63b15585058712cfce8766d4abfe84f"
-    },
-    "32bit": {
-      "url": "https://github.com/08820048/xpwd/releases/download/v1.0.1/xpwd-v1.0.1-x86_64-pc-windows.zip",
-      "hash": "e63b15585058712cfce8766d4abfe84f"
+      "hash": "3f955d50dc2dfcc1f9bab4eab1c417bd06ae3274243f9e6044d38cb9f0ea49b6"
     }
   },
   "bin": "xpwd.exe"
