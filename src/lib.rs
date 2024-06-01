@@ -1,4 +1,5 @@
 use colored::*;
+use prettytable::{cell, row, Table};
 use rand::distributions::Alphanumeric;
 use rand::prelude::*;
 use rand::seq::SliceRandom;
@@ -89,6 +90,16 @@ pub fn gen_password(len: usize, complexity: &str) -> String {
         .collect()
 }
 
+pub fn print_data_tables(datas: &[(String, String, String)]) {
+    let mut table = Table::new();
+    table.add_row(row![cell!("Len"), cell!("complex"), cell!("password")]);
+
+    for (p1, p2, p3) in datas {
+        table.add_row(row![p1, p2, p3]);
+    }
+    table.printstd();
+}
+
 // Evaluates the strength of a given password
 fn evaluate_password_strength(password: &str) -> u8 {
     let result = zxcvbn(password, &[]);
@@ -98,13 +109,25 @@ fn evaluate_password_strength(password: &str) -> u8 {
 // Prints a visual representation of the password strength
 pub fn print_password_strength(password: &str) {
     let score = evaluate_password_strength(password);
-    print!("Strength:");
+    print!("🛡️ ");
     match score {
-        0 => println!("{}", "■■■■■■■■".red()),                // Weak
-        1 => println!("{}", "■■■■■■■■■■■■■".magenta()),       // Very Weak
-        2 => println!("{}", "■■■■■■■■■■■■■■■■■■■■".yellow()), // Weak
-        3 => println!("{}", "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■".cyan()), // Medium
-        4 => println!("{}", "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■".green()), // Strong
-        _ => unreachable!(),                                  // Handle any unexpected cases
+        0 => println!("{} {}", "■■■■■■■■".red(), "very weak".red()), // Weak
+        1 => println!("{} {}", "■■■■■■■■■■■■■".magenta(), "weak".magenta()), // Very Weak
+        2 => println!(
+            "{} {}",
+            "■■■■■■■■■■■■■■■■■■■■".yellow(),
+            "moderate".yellow()
+        ), // Weak
+        3 => println!(
+            "{} {}",
+            "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■".cyan(),
+            "strong".cyan()
+        ), // Medium
+        4 => println!(
+            "{} {}",
+            "■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■".green(),
+            "very strong".green()
+        ), // Strong
+        _ => unreachable!(),                                         // Handle any unexpected cases
     }
 }

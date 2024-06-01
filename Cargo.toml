@@ -1,6 +1,6 @@
 [package]
 name = "xpwd"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 authors = ["Code0408"]
 description = "A simple and quick password generator for enhanced security."

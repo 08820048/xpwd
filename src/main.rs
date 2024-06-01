@@ -6,6 +6,7 @@ use clipboard::ClipboardContext;
 use clipboard::ClipboardProvider;
 use colored::Colorize;
 use notify_rust::Notification;
+use prettytable::{cell, row, Table};
 use xpwd::*;
 
 /// Command line arguments structure.
@@ -41,15 +42,15 @@ fn print_infos() {
     println!(
         "{}",
         Blue.paint(
-            r#" 
-               _______           ______  
-|\     /|     (  ____ )|\     /|(  __  \ 
+            r#"
+               _______           ______
+|\     /|     (  ____ )|\     /|(  __  \
 ( \   / )     | (    )|| )   ( || (  \  )
  \ (_) /_____ | (____)|| | _ | || |   ) |
   ) _ ((_____)|  _____)| |( )| || |   | |
  / ( ) \      | (      | || || || |   ) |
 ( /   \ )     | )      | () () || (__/  )
-|/     \|     |/       (_______)(______/         
+|/     \|     |/       (_______)(______/
         "#
         )
     );
@@ -63,8 +64,18 @@ fn main() {
         Some(ref password) => print_password_strength(password),
         None => {
             let pwd = gen_password(args.len, &args.complex);
+            let mut c = args.complex;
+            match c.as_str() {
+                "s" => c = "simple".to_string(),
+                "m" => c = "medium".to_string(),
+                "c" => c = "complex".to_string(),
+                _ => {}
+            }
+            let datas = vec![(args.len.to_string(), c, pwd.clone())];
 
-            println!("Your Password:\t{}", pwd.magenta());
+            print_data_tables(&datas);
+            print_password_strength(pwd.as_str());
+            //println!("{}\n\n", pwd.magenta());
 
             println!("\n\n");
 
