@@ -6,13 +6,32 @@ use clipboard::ClipboardContext;
 use clipboard::ClipboardProvider;
 use colored::Colorize;
 use notify_rust::Notification;
-use prettytable::{cell, row, Table};
 use xpwd::*;
 
-/// Command line arguments structure.
-#[derive(Debug, Parser)]
-#[command(version, author="Code0408", long_about = None)] // Metadata for the CLI tool
-struct Args {
+#[derive(Parser)]
+#[clap(name = "xpwd")]
+struct Opts {
+    #[clap(subcommand)]
+    command: Command,
+}
+
+#[derive(Parser)]
+#[command(
+    version,
+    about = "Fast, secure, and universal password generator.",
+    author = "Code0408"
+)]
+enum Command {
+    #[clap(about = "Generate a secure password of specified length and strength.")]
+    Pwd(PasswordArgs),
+    #[clap(about = "Check the strength of the password you entered.")]
+    Str(StrengthArgs),
+    #[clap(about = "Generate a random short passphrase password based on a dictionary.")]
+    Pas(PassphraseArgs),
+}
+
+#[derive(Parser)]
+struct PasswordArgs {
     #[arg(
         short = 'l',
         long = "len",
@@ -28,16 +47,30 @@ struct Args {
         help="Complexity of the password"
     )]
     complex: String,
+}
 
+#[derive(Parser)]
+struct StrengthArgs {
     #[arg(
         short = 'p',
         long = "password",
         help = "Check strength of your password"
     )]
-    password: Option<String>,
+    password: String,
 }
 
-/// Prints program information with styling.
+#[derive(Parser)]
+struct PassphraseArgs {
+    #[arg(short = 'w', long = "world", default_value_t = 3)]
+    num_words: usize,
+    #[arg(
+        short = 'd',
+        long = "dictionary",
+        help = "Specify the path to your phrase dictionary file."
+    )]
+    dictionary: String,
+}
+
 fn print_infos() {
     println!(
         "{}",
@@ -58,38 +91,47 @@ fn print_infos() {
 
 fn main() {
     print_infos();
-    let args = Args::parse();
 
-    match args.password {
-        Some(ref password) => print_password_strength(password),
-        None => {
-            let pwd = gen_password(args.len, &args.complex);
-            let mut c = args.complex;
-            match c.as_str() {
-                "s" => c = "simple".to_string(),
-                "m" => c = "medium".to_string(),
-                "c" => c = "complex".to_string(),
-                _ => {}
-            }
-            let datas = vec![(args.len.to_string(), c, pwd.clone())];
+    let opts = Opts::parse();
+
+    match opts.command {
+        Command::Pwd(PasswordArgs) => {
+            let pwd = gen_password(PasswordArgs.len, &PasswordArgs.complex);
+            let cmatch = match PasswordArgs.complex.as_str() {
+                "s" => "simple".to_string(),
+                "m" => "medium".to_string(),
+                "c" => "complex".to_string(),
+                _ => "unknown".to_string(),
+            };
+
+            let datas = vec![(PasswordArgs.len.to_string(), cmatch, pwd.clone())];
 
             print_data_tables(&datas);
             print_password_strength(pwd.as_str());
-            //println!("{}\n\n", pwd.magenta());
-
             println!("\n\n");
 
-            // Copy the generated password to the clipboard
             let mut ctx: ClipboardContext = ClipboardProvider::new().unwrap();
             ctx.set_contents(pwd.to_owned()).unwrap();
 
             if let Err(e) = Notification::new()
-                //.summary("")
-                .body("The password has been copied to the clipboard!")
+                .body("The password has benn copied to the clipboard!")
                 .show()
             {
                 eprintln!("err:{}", e);
             }
+        }
+        Command::Str(StrengthArgs) => print_password_strength(&StrengthArgs.password),
+
+        Command::Pas(PassphraseArgs) => {
+            //let path = "resources/dictionary.txt";
+            let dic = load_dictionary(&PassphraseArgs.dictionary);
+            let res = generate_random_passphrase(&dic, PassphraseArgs.num_words);
+
+            print_data_tables(&vec![(
+                PassphraseArgs.num_words.to_string(),
+                PassphraseArgs.dictionary.to_string(),
+                res.to_string(),
+            )]);
         }
     }
 }
