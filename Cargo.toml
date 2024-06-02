@@ -1,6 +1,6 @@
 [package]
 name = "xpwd"
-version = "1.0.1"
+version = "1.0.3"
 edition = "2021"
 authors = ["Code0408"]
 description = "A simple and quick password generator for enhanced security."
@@ -23,3 +23,4 @@ prettytable-rs = "0.10.0"
 rand = "0.8.5"
 zxcvbn = "3.0.1"
 notify-rust = "4.11.0"
+reqwest = "0.12.4"

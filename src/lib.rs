@@ -1,11 +1,14 @@
 use colored::*;
-use prettytable::{cell, row, Table};
+use prettytable::{color, row, Attr, Cell, Row, Table};
 use rand::distributions::Alphanumeric;
 use rand::prelude::*;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
+use reqwest::Client;
+use std::fs::File;
+use std::io::{BufRead, BufReader};
+use std::path::Path;
 use zxcvbn::zxcvbn;
-
 /// Generates a random unsigned 32-bit integer within a specified range
 ///
 /// # Arguments
@@ -92,9 +95,20 @@ pub fn gen_password(len: usize, complexity: &str) -> String {
 
 pub fn print_data_tables(datas: &[(String, String, String)]) {
     let mut table = Table::new();
-    table.add_row(row![cell!("Len"), cell!("complex"), cell!("password")]);
+    table.add_row(Row::new(vec![
+        Cell::new("Param1")
+            .with_style(Attr::Bold)
+            .with_style(Attr::ForegroundColor(color::BRIGHT_GREEN)),
+        Cell::new("Param2")
+            .with_style(Attr::Bold)
+            .with_style(Attr::ForegroundColor(color::BRIGHT_GREEN)),
+        Cell::new("Result")
+            .with_style(Attr::Bold)
+            .with_style(Attr::ForegroundColor(color::BRIGHT_GREEN)),
+    ]));
 
     for (p1, p2, p3) in datas {
+        // table.add_row(row![cell!(p1), cell!(p2), cell!(p3)]);
         table.add_row(row![p1, p2, p3]);
     }
     table.printstd();
@@ -129,5 +143,39 @@ pub fn print_password_strength(password: &str) {
             "very strong".green()
         ), // Strong
         _ => unreachable!(),                                         // Handle any unexpected cases
+    }
+}
+
+pub fn load_dictionary(file_path: &str) -> Vec<String> {
+    let file = File::open(file_path).expect("Failed to open dictionary file");
+    let reader = BufReader::new(file);
+    let mut dictionary = Vec::new();
+
+    for line in reader.lines() {
+        if let Ok(word) = line {
+            dictionary.push(word.trim().to_string());
+        }
+    }
+
+    dictionary
+}
+
+pub fn generate_random_passphrase(words: &[String], num_words: usize) -> String {
+    let selected_words: Vec<_> = words
+        .choose_multiple(&mut rand::thread_rng(), num_words)
+        .map(|word| capitalize_first_letter(word))
+        .collect();
+
+    let passphrase = selected_words.join("");
+    passphrase
+}
+
+fn capitalize_first_letter(word: &str) -> String {
+    let mut chars = word.chars();
+    if let Some(first_char) = chars.next() {
+        let capitalized = first_char.to_uppercase().chain(chars).collect::<String>();
+        capitalized
+    } else {
+        String::new()
     }
 }
