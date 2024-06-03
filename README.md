@@ -39,11 +39,11 @@ scoop install xpwd
 
 > More installation methods are coming soon...
 
-
-
 ------------------
 
 ## CLI  Usage
+
+The usage examples below are always in line with the latest version. If you are using an older version, please visit [https://crates.io/crates/xpwd](https://crates.io/crates/xpwd) to view the corresponding version's usage examples. Thank you.
 
 ```powershell
 $ xpwd -h
@@ -56,51 +56,66 @@ $ xpwd -h
 ( /   \ )     | )      | () () || (__/  )
 |/     \|     |/       (_______)(______/
 
-Command line arguments structure
+Fast, secure, and universal password generator.
+
+Usage: xpwd.exe <COMMAND>
+
+Commands:
+  pwd   Generate a secure password of specified length and strength.
+  str   Check the strength of the password you entered.
+  pas   Generate a random short passphrase password based on a dictionary.
+  help  Print this message or the help of the given subcommand(s)
 
 Options:
-  -l, --len <LEN>            Length of password [default: 8]
-  -c, --complex <COMPLEX>    Complexity of the password [default: m]
-  -p, --password <PASSWORD>  Check strength of your password
-  -h, --help                 Print help
-  -V, --version              Print version
+  -h, --help     Print help
+  -V, --version  Print version
 
 
-$ xpwd -l 8 -c s
-+-----+---------+----------+
-| Len | complex | password |
-+-----+---------+----------+
-| 8   | simple  | ld0an6qr |
-+-----+---------+----------+
+
+$ xpwd pwd -l 8 -c s
+
++--------+--------+----------+
+| Param1 | Param2 | Result   |
++--------+--------+----------+
+| 8      | simple | u50nil6u |
++--------+--------+----------+
 🛡️ ■■■■■■■■■■■■■■■■■■■■ moderate
+---------------------------------------------
+$ xpwd str -p 123456
 
-$ xpwd -l 16 -c m
-+-----+---------+------------------+
-| Len | complex | password         |
-+-----+---------+------------------+
-| 16  | medium  | DwkYFtnVRhYoVAgk |
-+-----+---------+------------------+
-🛡️ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ very strong
-
-$ xpwd -l 5 -c c
-+-----+---------+----------+
-| Len | complex | password |
-+-----+---------+----------+
-| 5   | complex | RtVUj    |
-+-----+---------+----------+
-🛡️ ■■■■■■■■■■■■■ weak
-
-$ cargo run -- -l 3 -c s
-+-----+---------+----------+
-| Len | complex | password |
-+-----+---------+----------+
-| 3   | simple  | pl9      |
-+-----+---------+----------+
 🛡️ ■■■■■■■■ very weak
-
+---------------------------------------------
+$ xpwd pas -d C:\RustProjects\xpwd\resources\dictionary.txt -w 3
++--------+-----------------------------------------------+-----------------------+
+| Param1 | Param2                                        | Result                |
++--------+-----------------------------------------------+-----------------------+
+| 3      | C:\RustProjects\xpwd\resources\dictionary.txt | PotatoHarmonyKeyboard |
++--------+-----------------------------------------------+-----------------------+
+-----------------------------------------------
 ```
 
+For details on each specific feature, you can use the `-h` command to view help. For example, to see the help for the `pwd` command, use:
 
+```rust
+$ xpwd pwd -h
+				_______          ______
+|\     /|     (  ____ )|\     /|(  __  \
+( \   / )     | (    )|| )   ( || (  \  )
+ \ (_) /_____ | (____)|| | _ | || |   ) |
+  ) _ ((_____)|  _____)| |( )| || |   | |
+ / ( ) \      | (      | || || || |   ) |
+( /   \ )     | )      | () () || (__/  )
+|/     \|     |/       (_______)(______/
+
+Generate a secure password of specified length and strength.
+
+Usage: xpwd.exe pwd [OPTIONS]
+
+Options:
+  -l, --len <LEN>          Length of password [default: 8]
+  -c, --complex <COMPLEX>  Complexity of the password [default: m]
+  -h, --help               Print help
+```
 
 > **The generated password will be automatically copied to the clipboard by default, allowing you to directly paste and use it.**
 
