@@ -127,7 +127,7 @@ $ cargo run -- -l 3 -c s
 8. **Password Leak Check**
    - ⌛ Integrates with an `API` (like `Have I Been Pwned`) to check if user-supplied passwords have been exposed in known data breaches, enhancing user awareness of password security.
 9. **Random Passphrase Generation**
-   - ⌛ In addition to traditional random strings, includes a dictionary-based passphrase generator that produces longer but more memorable passwords, such as “`CorrectHorseBatteryStaple`”.
+   - ✅ In addition to traditional random strings, includes a dictionary-based passphrase generator that produces longer but more memorable passwords, such as “`CorrectHorseBatteryStaple`”.
 10. **Multilingual Password Support**
     - ⌛ Expands character set support to allow for passwords containing non-English characters, catering to international users with specific needs.
 11. **Graphical User Interface**
