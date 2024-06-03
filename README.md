@@ -17,8 +17,6 @@ A command-line password generator built with Rust, offering a swift and effortle
 
 
 
-
-
 ## Installation
 
 ### **Install using Cargo**
@@ -117,6 +115,8 @@ Options:
   -h, --help               Print help
 ```
 
+[Official Documentation](https://github.com/08820048/xpwd/wiki/xpwd%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)
+
 > **The generated password will be automatically copied to the clipboard by default, allowing you to directly paste and use it.**
 
 ---
@@ -160,6 +160,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ---
 
-## about
+## About
 
 **In order to provide a more efficient and convenient user experience, the original project quick_pswd (https://crates.io/crates/quick_pswd) has officially been renamed to xpwd.**
