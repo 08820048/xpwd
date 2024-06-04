@@ -35,7 +35,7 @@ If you haven't installed **Scoop**, please refer to the official website for ins
 scoop install xpwd
 ```
 
-> More installation methods are coming soon...
+> **It is also recommended to install the browser extension for more convenience. Download link: https://github.com/08820048/xpwd-extend/releases/download/v1.0.0/xpwd-ex.zip**
 
 ------------------
 
@@ -148,7 +148,7 @@ Options:
 11. **Graphical User Interface**
     - ⌛ Considers developing a graphical user interface (`GUI`) to enhance the user experience, particularly for those unfamiliar with command-line operations.
 12. **Plug-in Based Development**
-    - ⌛ Develops related **plugins** to enrich usage scenarios, including browser plugins, `IDE` integrations, and apps for multiple platforms.
+    - ✅ Develops related **plugins** to enrich usage scenarios, including browser plugins([xpwd-extend](https://github.com/08820048/xpwd-extend)), `IDE` integrations, and apps for multiple platforms.
 13. **Educational Module**
     - ⌛Incorporates educational content on password security, covering common password cracking methods and guidelines for creating and managing strong passwords, to boost user awareness.
 
