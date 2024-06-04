@@ -158,8 +158,9 @@ Options:
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/08820048/xpwd/blob/master/LICENSE) file for details.
 
----
+----
 
-## About
+## Star 趋势图
 
-**In order to provide a more efficient and convenient user experience, the original project quick_pswd (https://crates.io/crates/quick_pswd) has officially been renamed to xpwd.**
+[![Stargazers over time](https://starchart.cc/08820048/xpwd.svg?variant=adaptive)](https://starchart.cc/08820048/xpwd)
+
