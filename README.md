@@ -35,7 +35,7 @@ If you haven't installed **Scoop**, please refer to the official website for ins
 scoop install xpwd
 ```
 
-> **It is also recommended to install the browser extension for more convenience. Download link: https://github.com/08820048/xpwd-extend/releases/download/v1.0.0/xpwd-ex.zip**
+> chrome plug-in installation address：https://chromewebstore.google.com/detail/emecolaklhnkmjjodcgkcifdnnolndck
 
 ------------------
 

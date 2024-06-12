@@ -4,7 +4,6 @@ use ansi_term::Color::Blue;
 use clap::Parser;
 use clipboard::ClipboardContext;
 use clipboard::ClipboardProvider;
-use colored::Colorize;
 use notify_rust::Notification;
 use xpwd::*;
 
@@ -123,7 +122,6 @@ fn main() {
         Command::Str(StrengthArgs) => print_password_strength(&StrengthArgs.password),
 
         Command::Pas(PassphraseArgs) => {
-            //let path = "resources/dictionary.txt";
             let dic = load_dictionary(&PassphraseArgs.dictionary);
             let res = generate_random_passphrase(&dic, PassphraseArgs.num_words);
 
